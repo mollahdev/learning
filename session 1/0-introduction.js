@@ -20,7 +20,7 @@ const paidPermissions = {
     transfer: true,
 }
 
-const factory = (name, id, permissions) => {
+const permissionFactory = (name, id, permissions) => {
     return {
         name,
         id,
@@ -28,16 +28,16 @@ const factory = (name, id, permissions) => {
     }
 }
 
-const create = (param1, param2) => {
+const createUserPermission = (param1, param2) => {
     if (param1 < 15) {
-        return factory(param1, `${param1}-${param2}`, freePermissions)
+        return permissionFactory(param1, `${param1}-${param2}`, freePermissions)
     }
 
-    return factory(param1, `${param1}-${param2}`, paidPermissions)
+    return permissionFactory(param1, `${param1}-${param2}`, paidPermissions)
 }
 
-console.log(create('Jhone', 100))
-console.log(create('Max', 200))
+console.log(createUserPermission('Jhone', 100))
+console.log(createUserPermission('Max', 200))
 
 /**
  * EXAMPLE 2
@@ -52,15 +52,28 @@ const MyButton = (props) => {
  */
 
 const MyInput = (props) => {
-    const { fieldType, onValueChange, disabled, fieldValue, placeholder } = props
+    const { type, onValueChange, disabled, fieldValue, placeholder, ...rest } = props
 
     return (
         <input
-            type={fieldType}
+            type={type}
             onChange={onValueChange}
             disabled={disabled}
             value={fieldValue}
             placeholder={placeholder}
+            {...rest}
         />
     )
 }
+
+
+<>
+    <input
+        type={ }
+    />
+
+    <MyInput
+        type={ }
+        onChange={ }
+    />
+</>
