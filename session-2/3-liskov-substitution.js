@@ -60,6 +60,12 @@ class FlyingBird extends BirdBase {
     }
 }
 
+class DimDewaBird extends BirdBase {
+    layEggs() {
+        console.log('I can lay eggs');
+    }
+}
+
 class SwimmingBird extends BirdBase {
     swim() {
         console.log('I can swim');
@@ -82,10 +88,12 @@ function feedBird(bird) {
 
 const eagle = new Eagle();
 const penguinGood = new PenguinGood();
+const abcBird = new DimDewaBird()
 
 // Works fine
-feedBird(eagle);
-feedBird(penguinGood);
+feedBird(abcBird);
+feedBird(penguinood);
+
 
 // PenguinGood is not a FlyingBird, so we can't pass it here.
 // We don't assume all Birds can fly.
@@ -110,6 +118,44 @@ const BetterTurboButton = (props) => {
         <button {...props} style={{ background: 'red', ...props.style }}>
             TURBO MODE
         </button>
+    )
+}
+
+const PrimaryButton = (props) => {
+    const props = {
+        style: {
+            background: 'blue',
+        },
+        ...props
+    }
+
+    return (
+        <BetterTurboButton {...props}>Primary</BetterTurboButton>
+    )
+}
+
+
+const LightPrimaryButton = () => {
+    const props = {
+        style: {
+            background: 'blue',
+        }
+    }
+
+    return (
+        <PrimaryButton {...props}>Primary</PrimaryButton>
+    )
+}
+
+const SecondaryButton = (props) => {
+    const props = {
+        style: {
+            background: 'green',
+        }
+    }
+
+    return (
+        <BetterTurboButton {...props}>Secondary</BetterTurboButton>
     )
 }
 

@@ -1,7 +1,6 @@
 // Open/Closed Principle
 // A class/function should be open for extension, but closed for modification
 
-// Bad example
 const User = (name, email, password, type) => {
     return {
         name,
@@ -18,7 +17,6 @@ const User = (name, email, password, type) => {
     }
 }
 
-// Good example
 const UserGood = (name, email, password, storage) => {
     return {
         name,
@@ -44,10 +42,17 @@ const fileStorage = {
     }
 }
 
+const localStorage = {
+    save(user) {
+        // save to local storage
+        console.log('Saved to Local Storage', user.name)
+    }
+}
+
 const user = UserGood('John', 'john@example.com', 'password', dbStorage)
 user.save()
 
-const user2 = UserGood('Jane', 'jane@example.com', 'password', fileStorage)
+const user2 = UserGood('Jane', 'jane@example.com', 'password', localStorage)
 user2.save()
 
 // React Bad Example
@@ -58,6 +63,7 @@ const ButtonBad = ({ type, onClick }) => {
             {type === 'save' && <span>💾 Save</span>}
             {type === 'delete' && <span>🗑️ Delete</span>}
             {type === 'edit' && <span>✏️ Edit</span>}
+            {type === 'duplicate' && <span>✏️ Duplicate</span>}
         </button>
     )
 }

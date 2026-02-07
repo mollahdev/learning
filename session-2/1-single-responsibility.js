@@ -1,7 +1,6 @@
 // Single Responsibility Principle
 // A class/function should have only one reason to change
 
-// Bad example
 const User = (name, email, password) => {
     return {
         name,
@@ -16,7 +15,6 @@ const User = (name, email, password) => {
     }
 }
 
-// Good example
 const UserRepository = (name, email, password) => {
     return {
         name,
@@ -39,7 +37,6 @@ const EmailService = (name, email, password) => {
     }
 }
 
-// reactJs bad example with component
 const UserComponentBad = ({ name, email, password }) => {
     // validation logic (Responsibility 1)
     if (!email.includes('@')) {
@@ -49,6 +46,17 @@ const UserComponentBad = ({ name, email, password }) => {
     // data persistence logic (Responsibility 2)
     const saveUser = () => {
         // save to db
+        fetch('https://jsonplaceholder.typicode.com/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                password,
+            }),
+        })
     }
 
     // render logic (Responsibility 3)

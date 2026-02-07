@@ -1,5 +1,17 @@
 // Dependency Inversion Principle (DIP)
-// Integration focused codebase
+// High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+// what is abstraction?
+// abstraction is a way to hide the implementation details of a module
+
+// what is high level module and low level module?
+// high level module is the module that contains the business logic
+// example: UserAuthentication, PaymentProcessing, ReportGenerator (The "Policy" or "Strategy")
+
+
+// low level module is the module that contains the implementation details
+// example: MySQLConnection, StripeAdapter, FileSystemReader (The "Mechanism" or "Utility")
+
 
 class MySQLDatabase {
     save(data) {
@@ -98,6 +110,21 @@ const ParentComponent = () => {
     useEffect(() => {
         // Dependency is managed here
         fetch('https://api.openweathermap.org/data/2.5/weather?q=London')
+            .then(res => res.json())
+            .then(setData);
+    }, []);
+
+    // WeatherGood is now independent of the API implementation
+    return <WeatherGood data={data} />;
+}
+
+// The parent component handles the dependency (the API call)
+const Dhaka = () => {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        // Dependency is managed here
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=Dhaka')
             .then(res => res.json())
             .then(setData);
     }, []);
