@@ -1,0 +1,10 @@
+# Tools
+https://www.npmjs.com/package/web-vitals
+https://pagespeed.web.dev/
+https://search.google.com/u/1/search-console/welcome?utm_source=about-page&pageId=none
+https://googlechrome.github.io/lighthouse/scorecalc/
+
+# Articles
+https://web.dev/articles/vitals
+https://web.dev/articles/lcp
+https://web.dev/articles/cls

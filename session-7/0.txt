@@ -1,0 +1,1 @@
+Web Vitals is a broad initiative by Google to provide unified guidance for quality signals that are essential to delivering a great user experience on the web.
